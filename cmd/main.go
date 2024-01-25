@@ -58,6 +58,9 @@ func init() {
 // Main implements the main function of the caddy command.
 // Call this if Caddy is to be the main() of your program.
 func Main() {
+	runtime.SetBlockProfileRate(1)
+	runtime.SetMutexProfileFraction(1)
+
 	if len(os.Args) == 0 {
 		fmt.Printf("[FATAL] no arguments provided by OS; args[0] must be command\n")
 		os.Exit(caddy.ExitCodeFailedStartup)
